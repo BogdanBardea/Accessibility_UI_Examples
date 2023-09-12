@@ -1,0 +1,159 @@
+---
+layout: post
+title:  "Modal"
+categories: jekyll update
+---
+Please enter some text in one of the fields below and close the Browser tab or window. 
+
+Background: If any unsaved contents are available the application should ask the user what to do and not simply loose the data. Could be important 😉
+
+<div>
+<style>
+.modal {
+  background-color: rgba(0,0,0,0.5);
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+}
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 150px;
+  justify-content: space-around;
+}
+.modal_visible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal_content {
+  background-color: rgb(255, 255, 255);
+  
+  height: 50%;
+  width: 50%;
+  padding: 1rem;
+}
+.modal_close {
+outline: none;
+background-color: transparent;
+color: black;
+border: none;
+}
+:focus {
+  outline: 2px solid blue;
+}
+</style>
+	<button class="modal_show">Show Modal</button>
+      <div class="modal" id="modal" tabindex="0" role="dialog">
+        <div class="modal_content">
+          <div class="modal-header">
+            <h2 id="modal_title">Modal</h2>
+            <button class="modal_close" aria-label="Close the modal">X</button>
+            <!-- modal_close -->
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit
+            qui, iusto numquam harum est officiis voluptate animi eligendi,
+            incidunt saepe dolore.
+            <a href="#" aria-label="Some interesting link">Adipisci</a> quos
+            odio, optio aspernatur ex quae excepturi repudiandae.
+          </p>
+          <form action="submit" class="modal-form">
+            <label for="firstname">First name</label>
+            <input
+              type="text"
+              id="firstname"
+              name="firstname"
+              placeholder="Insert the first name"
+            />
+            <label for="lastname">Last name</label>
+            <input
+              type="text"
+              id="lastname"
+              name="lastname"
+              placeholder="Insert the last name"
+            />
+            <button aria-label="Send your details">Send</button>
+          </form>
+        </div>
+        <!-- modal_content -->
+      </div>
+      <!-- modal -->
+    <script>// Button to trigger the modal window
+var button = document.querySelector('.modal_show');
+// Variable for storing the last focused element
+var lastFocusedElement;
+// Close button in modal window
+var closeButton = document.querySelector('.modal_close')
+// Open modal window on click
+button.addEventListener('click', showModal);
+// Show Modal
+function showModal() {
+  // Close all open modal windows
+  removeModal();
+  // Store the last focused element
+  lastFocusedElement = document.activeElement;
+  // Select the modal window
+  var modal = document.getElementById('modal');
+  // Show the window
+  modal.classList.add('modal_visible');
+  // Find all focusable children
+  var focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+  var focusableElements = modal.querySelectorAll(focusableElementsString);
+  // Convert NodeList to Array
+  focusableElements = Array.prototype.slice.call(focusableElements);
+  // The first focusable element within the modal window
+  var firstTabStop = focusableElements[0];
+  // The last focusable element within the modal window
+  var lastTabStop = focusableElements[focusableElements.length - 1];
+  // Focus the window
+  firstTabStop.focus();
+  // Add keydown event
+  modal.addEventListener('keydown', function(e) {
+    // Listen for the Tab key
+    if (e.keyCode === 9) {
+      // If Shift + Tab
+      if (e.shiftKey) {
+        // If the current element in focus is the first focusable element within the modal window...
+        if (document.activeElement === firstTabStop) {
+          e.preventDefault();
+          // ...jump to the last focusable element
+          lastTabStop.focus();
+        }
+      // if Tab
+      } else {
+        // If the current element in focus is the last focusable element within the modal window...
+        if (document.activeElement === lastTabStop) {
+          e.preventDefault();
+          // ...jump to the first focusable element
+          firstTabStop.focus();
+        }
+      }
+    }
+    // Close the window by pressing the Esc-key
+    if(e.keyCode === 27) {
+      removeModal();
+    }
+  });
+}
+// Close the window by clicking the close button
+document.querySelector('.modal_close').addEventListener('click', removeModal);
+// Remove the modal window if it's visible
+function removeModal() {
+  var visibleClass = 'modal_visible';
+  if (document.querySelector('.' + visibleClass)) {
+    document.querySelector('.' + visibleClass).classList.remove(visibleClass);
+    // Return the focus to the last focused element
+    lastFocusedElement.focus();
+  }
+}
+</script>
+ </div>

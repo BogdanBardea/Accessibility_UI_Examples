@@ -1,12 +1,20 @@
 ---
 layout: post
 title:  "Prevent Tab Close"
-date:   2023-08-28 14:56:30 +0300
 categories: jekyll update
 ---
+## Description
+
+In web accessibility, the term <b>prevent tab close</b> typically refers to a design or development practice that aims to prevent accidental closure of a tab or window when a user interacts with a web application. This practice is especially important for users who rely on keyboard navigation and screen readers, as they may inadvertently close a tab or window if they press certain keyboard shortcuts or perform certain actions.
+
+## Instructions
 Please enter some text in one of the fields below and close the Browser tab or window. 
 
-Background: If any unsaved contents are available the application should ask the user what to do and not simply loose the data. Could be important 😉
+## Expectations
+
+If any unsaved contents are available, the application should ask the user what to do and not simply lose the data.
+
+## Example
 
 <div>
 <style>
