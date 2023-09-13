@@ -3,9 +3,18 @@ layout: post
 title:  "Modal"
 categories: jekyll update
 ---
-Please enter some text in one of the fields below and close the Browser tab or window. 
+## Description
 
-Background: If any unsaved contents are available the application should ask the user what to do and not simply loose the data. Could be important 😉
+A <b>modal</b>, in the context of web accessibility, refers to a user interface component that temporarily overlays content on a web page, often used for purposes like displaying pop-up dialogs, alerts, or additional information without navigating away from the current page. To ensure that modals are accessible to all users, including those with disabilities, it's important to adhere to web accessibility standards and guidelines.
+
+## Instructions
+Access the modal via the "Show modal" button.
+
+## Expectations
+
+The focus should be trapped within the modal, the escape key should close the modal.
+
+## Example
 
 <div>
 <style>
@@ -25,7 +34,7 @@ Background: If any unsaved contents are available the application should ask the
 .modal-form {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: auto;
   height: 150px;
   justify-content: space-around;
 }
@@ -36,7 +45,6 @@ Background: If any unsaved contents are available the application should ask the
 }
 .modal_content {
   background-color: rgb(255, 255, 255);
-  
   height: 50%;
   width: 50%;
   padding: 1rem;
