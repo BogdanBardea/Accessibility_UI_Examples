@@ -22,8 +22,8 @@ title: Accessibility Examples
 # email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   This website is meant to show examples of accessible UI elements for developers
- #baseurl: "Accessibility_UI_Examples" # the subpath of your site, e.g. /blog
-baseurl: ""
+ baseurl: "Accessibility_UI_Examples" # the subpath of your site, e.g. /blog
+#baseurl: ""
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 
